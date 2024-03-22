@@ -1,4 +1,4 @@
-package com.skillstorm.assignments;
+package assignments.week1;
 
 public class AssignmentTwo {
 

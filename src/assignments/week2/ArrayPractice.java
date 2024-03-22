@@ -1,4 +1,4 @@
-package com.skillstorm.assignments;
+package assignments.week2;
 // import array utility//
 import java.util.Arrays;
 public class ArrayPractice {
