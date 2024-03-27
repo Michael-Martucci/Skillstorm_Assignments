@@ -10,16 +10,17 @@ public class CalulationsOfCircles {
         circle1.getDiameter();
         circle1.getCircumference();
         System.out.println("> Circle 1 properties");
+        System.out.println();
         System.out.println(circle1); //trim white space
-        System.out.println("////////////////////");
+        System.out.println();
 
         Circle circle2 = new Circle();
-        circle2.setRadius(0);
+        circle2.setRadius(2);
         circle2.getArea();
         circle2.getDiameter();
         circle2.getCircumference();
         System.out.println("> Circle 2 properties");
-        System.out.println("////////////////////");
+        System.out.println();
         System.out.println(circle2);
 
     }
