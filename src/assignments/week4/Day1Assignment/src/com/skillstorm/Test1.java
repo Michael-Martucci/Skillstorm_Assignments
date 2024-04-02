@@ -1,12 +1,12 @@
-package com.skillstorm;
+// package com.skillstorm;
 
-public class Test1 {
-    public static void main(String[] args) {
-        Flower flower1 = new Rose("pink", "Damask", true); 
-        flower1.smell();
-    }
+// public class Test1 {
+//     public static void main(String[] args) {
+//         Flower flower1 = new Rose("pink", "Damask", true); 
+//         flower1.smell();
+//     }
 
-}
+// }
 //Test 1 will compile and it will run. 
 //it will print "This pink damask rose smells good"
 // In polymorphism this is an example of constructor chaining and method overriding
