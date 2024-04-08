@@ -62,7 +62,7 @@ public String toString() {
         programmer.setName("Michael");
         programmer.setCompany("CGI Federal");
         ArrayList <String> languages = new ArrayList<>(4); // set capacity
-        languages.add("Python");
+        languages.add("Python"); // can use braces to add multiple items similar to arrays {} ?
         languages.add("JSON");
         languages.add("JAVA");
         languages.add("C++");
