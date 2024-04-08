@@ -7,7 +7,7 @@ public class Characters {
     private int health; // tried to use short type here but the constructor chain wasn't allowing it
     private int courage;
     private int strength;
-    private int intelligence;
+    private int intelligence; // commenting to make a change
 
     // constructors//
 public Characters(){}
