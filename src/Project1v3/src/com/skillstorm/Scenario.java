@@ -117,7 +117,7 @@ System.out.println();
 
 
 Scenario s5 = new Scenario();
-s5.setScenario5("The creature escorts you to the base of a tall tower miles away. You ascend the stairs to the top\nwhere you encounter a white wizard. 'I am the White Wizard of Onza. You have made it to the end of\nyour journey and have proven yourself capable of leading the human realm. Before you may take the\nthrown you must know. I have gazed into the future and if you accept the crown the human world will\nbe plagued with strife and horrors for centuries. Knowing what you now know do you wish to accept\nthe throne or leave it vacant which would confine you to this labryrith for all eternity.'\nWhich do you choose?' ");
+s5.setScenario5("The creature escorts you to the base of a tall tower miles away. You ascend the stairs to the top\nwhere you encounter a white wizard. 'I am the White Wizard of Onza. You have made it to the end of\nyour journey and have proven yourself capable of leading the human realm. Before you may take the\nthrown, you must know. I have gazed into the future and if you accept the crown the human world will\nbe plagued with strife and horrors for centuries. Knowing what you now know do you wish to accept\nthe throne or leave it vacant which would confine you to this labryrith for all eternity.'\nWhich do you choose?' ");
 System.out.println(s5.getScenario5());
 System.out.println();
 
