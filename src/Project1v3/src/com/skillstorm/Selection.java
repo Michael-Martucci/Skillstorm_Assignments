@@ -57,8 +57,7 @@ public void setPlayAgain(String playAgain) {
 
 // main
 public static void main (String ... args){
- Selection sc1 = new Selection();
- sc1.setSceneChoices("");
+
  
 }
 

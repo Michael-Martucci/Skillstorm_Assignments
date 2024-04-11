@@ -9,10 +9,8 @@ public class Scenario {
     private String scenario4 = null; 
     private String scenario5 = null;
     private String endScene = null;
-    private String statCheck = null;   
-    private int attribute1 = 0;
-    private int attribute2 = 0;
-    private int attribute3 = 0;
+      
+    
 
     // constructor
     public Scenario(){}
@@ -27,6 +25,13 @@ public class Scenario {
     public void setGreeting(String greeting) {
         this.greeting = greeting;
         
+    }
+
+    public String getObscura() {
+        return obscura;
+    }
+    public void setObscura(String obscura) {
+        this.obscura = obscura;
     }
     public String getScenario1() {
         return scenario1;
@@ -67,19 +72,6 @@ public class Scenario {
         this.endScene = endScene;
     }
 
-    
-    public String getStatCheck() {
-        return statCheck;
-    }
-    public void setStatCheck(String statCheck) {
-        this.statCheck = statCheck;
-    }
-public String getObscura() {
-        return obscura;
-    }
-    public void setObscura(String obscura) {
-        this.obscura = obscura;
-    }
 public static void main (String ... arg){ 
 
 Scenario greeting = new Scenario();// in gui this should be an image of a friar or mage
@@ -131,3 +123,5 @@ System.out.println();
 
 }
 }
+
+

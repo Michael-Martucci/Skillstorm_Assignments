@@ -1,13 +1,13 @@
 package com.skillstorm;
 
-public class Characters {
+public class Characters extends Uber {
 // properties
     private String name;
     private String description;
-    private int health; // tried to use short type here but the constructor chain wasn't allowing it
-    private int courage;
-    private int strength;
-    private int intelligence; // commenting to make a change
+    private static int health; // tried to use short type here but the constructor chain wasn't allowing it
+    private static int courage;
+    private static int strength;
+    private static int intelligence; // commenting to make a change
 
     // constructors//
 public Characters(){}
@@ -21,10 +21,36 @@ public Characters(String name, String description){
 
 public Characters(int health, int courage, int strength, int intelligence){
     this("name" , "description");
-    this.health = health;
-    this.courage = courage;
-    this.strength = strength;
-    this.intelligence = intelligence;
+    Characters.health = health;
+    Characters.courage = courage;
+    Characters.strength = strength;
+    Characters.intelligence = intelligence;
+}
+// method for stat tracking
+
+public static int increaseHeatlh(){
+    return health++;
+}
+public static int increaseCourage(){
+    return courage++;
+}
+public static int increaseStrength(){
+    return strength++;
+}
+public static int increaseIntelligence(){
+    return intelligence++;
+}
+public static int decreaseHeatlh(){
+    return health--;
+}
+public static int decreaseCourage(){
+    return courage--;
+}
+public static int decreaseStrength(){
+    return strength--;
+}
+public static int decreaseIntelligence(){
+    return intelligence--;
 }
 
 // getters and setters
@@ -49,7 +75,7 @@ public int getHealth() {
 }
 
 public void setHealth(int health) {
-    this.health = health;
+    Characters.health = health;
 }
 
 public int getCourage() {
@@ -57,7 +83,7 @@ public int getCourage() {
 }
 
 public void setCourage(int courage) {
-    this.courage = courage;
+    Characters.courage = courage;
 }
 
 public int getStrength() {
@@ -65,7 +91,7 @@ public int getStrength() {
 }
 
 public void setStrength(int strength) {
-    this.strength = strength;
+    Characters.strength = strength;
 }
 
 public int getIntelligence() {
@@ -73,8 +99,12 @@ public int getIntelligence() {
 }
 
 public void setIntelligence(int intelligence) {
-    this.intelligence = intelligence;
+    Characters.intelligence = intelligence;
 }
+
+// method for stat tracking
+
+
 // to String
 @Override
 public String toString() {

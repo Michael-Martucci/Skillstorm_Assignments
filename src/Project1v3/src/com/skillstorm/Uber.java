@@ -1,19 +1,19 @@
 package com.skillstorm;
 import java.util.Scanner;
-public class Houston {
+public class Uber {
+    
 
-    private String currentScene;
+   
     // static boolean validEntry = false; // tried this as static but didnt work outside the first do-while
 
-
-    Houston(){}; // no args
-    Houston(String currentScene){
-        this.currentScene = currentScene;
-    }
+    
+    
     public static void main (String ... args){
         Scanner in = new Scanner(System.in); // initalize scanner
-        // boolean validEntry = false;
+    
       
+        
+
         Scenario greeting = new Scenario();
         greeting.setGreeting("Greetings my liege. The throne of mankind lies dormant. "
         +"However, in order to claim it, one must\nembark on a perilous journey that will "
@@ -76,8 +76,9 @@ public class Houston {
         Scenario endScene = new Scenario();
         endScene.setEndScene("Congratulations my leige! You have survived the realm and have proven yourself worthy to rule.\n"
         +"Long live the king!");
-        // need print final stats and disply high scores
+        
         // need to ask if want to play again
+        
         
         
         
@@ -104,51 +105,69 @@ do{
                 System.out.println("A: " + c1.getName());
                 System.out.println("B: " + c2.getName());
                 System.out.println("C: " + c3.getName());
+                System.out.println("i: Information");
                 
         }
             else{ System.out.println("Please select yes / no"); 
         }
     }while(!validEntry);
-
+    Characters playersCharacter = null;
     validEntry = false;
 do{
         String charSelect = in.nextLine().toLowerCase();
-        if (charSelect.contains("a")|| charSelect.contains("b")|| charSelect.contains("c")){
-            System.out.println(ob.getObscura());
+        switch (charSelect) {
+            case "a":
+                playersCharacter = c1;
+                validEntry = true;
+                break;
+            case "b":
+            playersCharacter = c2;
             validEntry = true;
+                break;
+            case "c":
+            playersCharacter = c3;
+            validEntry = true;
+                break;
+            case "i":
+            System.out.println("A: " + c1.toString());
+            System.out.println();
+            System.out.println("B: " + c2.toString());
+            System.out.println();
+            System.out.println("C: " + c3.toString());
+            default:
+                System.out.println("Please select a character");
         }
-            else{ System.out.println("Please select a character");
-    
-}
-    }while(!validEntry);
+    }while (!validEntry);
 
-// do while boolean
     System.out.println(s1.getScenario1());
     System.out.println(); 
     Selection sc1 = new Selection();
     sc1.setSceneChoices("A: Push the boulder\n"
         +"B: Open the Thome\n"
         +"C: Float");
-    System.out.println(sc1.getSceneChoices()); /// choices for scenario1
-    // String choice1 = in.nextLine().toLowerCase();
+    System.out.println(sc1.getSceneChoices());
          validEntry = false;
     do{
         String choice1 = in.nextLine().toLowerCase();
         switch (choice1) {
         case "a":
             System.out.println("The boulder doesn't move!"); // add a limit of tries before game over
-            System.out.println("-2 strength");
+            System.out.println("The water is rising fast!");
+            System.out.println("-1 Strength");
+            Characters.decreaseStrength();
             break;
         case "b":
                 System.out.println("As you open the book, an otherworldly voice begins to chant a mystic spell.");
                 System.out.println("The boulder breaks apart, revealing the doorway and allowing the water to flow out.");
                 System.out.println("You proceed to safety.");
-                System.out.println("+1 intelligence");
-                validEntry = true; // insert stat increment
+                System.out.println("+1 Intelligence");
+                Characters.increaseIntelligence();
+                validEntry = true; 
             break;
         case "c":
             System.out.println("You float as the water continues to rise. It fills the room, and you drown");
             System.out.println("Game Over"); // insert would you like to play again option
+            System.exit(0);
             break;
         default:
             System.out.println("Invalid Entry");
@@ -173,20 +192,27 @@ do{
         case "a":
             System.out.println("Your throat tightens and the room fades to black");
             System.out.println("Your fate is sealed. Game over"); // insert restart game
+            System.exit(0);
             validEntry = true;
             break;
         case "b":
                 System.out.println("Your thirst has been quenched!");
                 System.out.println("A door way is revealed in the stone wall providing you an exit.");
                 System.out.println("You may proceed");
-                System.out.println("+1 courage"); // insert stat increment
+                System.out.println("+1 Courage"); // insert stat increment
+                System.out.println("+1 Strength");
+                Characters.increaseCourage();
+                Characters.increaseStrength();
                 validEntry = true;
             break;
         case "c":
             System.out.println("You give the man a sip and wait a moment. The man groans in pain and collapses. You drink from the other chalice");
             System.out.println("A door way is revealed in the stone wall providing you an exit"); // insert would you like to play again option
-            System.out.println("+2 intelligence");
-            System.out.println("-3 courage"); // stat icrement
+            System.out.println("+1 Intelligence");
+            System.out.println("-1 Courage");
+            Characters.increaseIntelligence();
+            Characters.decreaseCourage();
+
             validEntry = true;
             break;
         default:
@@ -212,20 +238,26 @@ do{
     switch (choice3) {
         case "a":
             System.out.println("That's the most foul, cruel, and bad-tempered rodent you ever set eyes on"); 
-            System.out.println("The rabbit lunges at your neck and gnawls at your flesh!");
-            System.out.println("-25 HP -2 intelligence"); // decrease HP
+            System.out.println("The rabbit lunges at your neck and gnawls your head off! Game Over");
+            System.out.println("-1 intelligence"); // decrease HP
+            Characters.decreaseIntelligence();
+            System.exit(0);
+
             break;
         case "b":
                 System.out.println("You ran away");
                 System.out.println("That was rabbit was the guardian of Caerbannog.");
                 System.out.println("It's got a vicious streak a mile wide! It's a killer!");
-                System.out.println("+1 Intelligence"); // insert stat increment
+                System.out.println("+1 Intelligence");
+                Characters.increaseIntelligence();
                 validEntry = true;
             break;
         case "c":
             System.out.println("Hey rabbit, Your mother was a hamster and your father smelt of elderberries!");
-            System.out.println("The rabbit lunges at your neck and gnawls at your flesh!"); 
-            System.out.println("-25 HP + 2 courage"); 
+            System.out.println("The rabbit lunges at your neck and gnawls your head off! Game Over"); 
+            System.out.println("+1 courage"); 
+            Characters.increaseCourage();
+            System.exit(0);
             break;
         default:
             System.out.println("Invalid Entry");
@@ -252,6 +284,7 @@ do{
                 System.out.println("Before you can react the creature pulls out a blow gun and fires a dart into your arm. Everything fades to black"); 
                 System.out.println("You awake to find yourself inside a hut with a large culdroun boiling and the creature singing it's tune and sharpening a knife");// insert restart game
                 System.out.println("Game Over"); // insert restart
+                System.exit(0);
                 break;
             case "b":
                 System.out.println("Before you can react the creature pulls out a blow gun and fires a dart into your arm. Everything fades to black"); 
@@ -262,7 +295,8 @@ do{
             case "c":
                 System.out.println("The tiny creature becomes furious, hurling curses at you in its foregin tounge");
                 System.out.println("Fine! I will show you you way."); 
-                System.out.println("+1 intelligence"); // stat increment
+                System.out.println("+1 intelligence");
+                Characters.increaseIntelligence();
                 validEntry = true;
                 break;
             case "d":
@@ -295,16 +329,20 @@ do{
                 System.out.println("Onza: You have made a selfish choice, this was your final test of honor and you failed. "
                     + " The wizard casts a spell and you fall unconcious. You awake in a dim room chained to "
                     + " the wall. The only thing in the room is a pedastool which contains 2 chalices! Game Over"); // restart
+                    Characters.decreaseCourage();
                     System.exit(0);
                     break;
             case "b":
                 System.out.println("Onza: You have passed your final test and have proven yourself honorable. You may dawn the crown"); 
-                System.out.println(endScene.getEndScene());    
+                System.out.println(endScene.getEndScene());   
+                Characters.increaseCourage(); 
                 validEntry = true;           
                 break;
             case "c":
                 System.out.println("You charge Onza who + casts a spell and you fall unconcious. You awake in a dim room chained to "
                 + " the wall. The only thing in the room is a pedastool which contains 2 chalices! Game Over"); // restart
+                Characters.increaseCourage();
+                Characters.decreaseIntelligence();
                 System.exit(0);
                 break;
             default:
@@ -313,14 +351,23 @@ do{
         } 
     }while(!validEntry);  
 
-        System.out.println(endScene.getEndScene());
+    System.out.println(playersCharacter); // fix to print with a new description
+// add opening comments
+    // add instructions for game ie " select a b, y n etc"
     // print stats and or leaderbard
-    // still need to increment stats along the way
+    // take into account character stats in scenarios
+    // Upon program start, prompt the user to create their specific player object by choosing their property values or allow chance to decide
     // edit switch statement to reprint selections
     //edit defaults to be more specific
-    // add sys.exits
+    // add print lines for spacing
     // prettify code
-    // track stats
+    // track stats - in intro offer users how to see stats along the way
+    // review and incorporate style conventions
+    // look to add at least 1 read from text file
+    // consider a very simple gui 
+    // add char art for title
+    
+    // slow down printing?
 
 
 
