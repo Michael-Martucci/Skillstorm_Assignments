@@ -1,18 +1,31 @@
-## Getting Started
+# Skillstorm Project 1
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+design a text based game with five scenes that can be run in the terminal
 
-## Folder Structure
+## overview
 
-The workspace contains two folders by default, where:
+This project includes 5 scenarios which require the user to make a selection whcih will proceed the journey and increase/decrease the characters stats or terminate the character and the game if the wrong choice is selected. 
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### Executing program
 
-## Dependency Management
+* run the main method from the Control class in order to initiate the game
+* commands: y /n (or yes / no) : Use A, B C D + enter for selecting choices
+```
+```
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Authors
+
+Author: Michael Martucci
+michael.martucci@yahoo.com
+
+## Version History
+
+    * Initial Release
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+* https://stackoverflow.com/questions/46968932/java-do-loop-repeat-until-valid-entry
+* https://codereview.stackexchange.com/questions/164540/simple-text-based-rpg-in-java
