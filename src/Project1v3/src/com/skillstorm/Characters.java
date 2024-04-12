@@ -1,4 +1,4 @@
-package com.skillstorm;
+package Project1v3.src.com.skillstorm;
 
 public class Characters extends Control {
     // properties

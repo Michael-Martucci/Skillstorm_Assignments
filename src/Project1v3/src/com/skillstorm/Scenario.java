@@ -1,4 +1,4 @@
-package com.skillstorm;
+package Project1v3.src.com.skillstorm;
 
 public class Scenario {
     private String greeting = null;
@@ -113,7 +113,7 @@ public class Scenario {
 
     public void setEndScene() {
         this.endScene = "Congratulations my leige! You have survived the realm and have proven yourself worthy to rule.\n"
-                + "Long live the king!";
+                + "Long live the King/Queen!";
     }
 
 }

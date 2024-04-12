@@ -10,7 +10,7 @@ Sources: Stack Overflow, Oracle docs, Java T point, Youtube,
 
  */
 
-package com.skillstorm;
+package Project1v3.src.com.skillstorm;
 
 import java.util.Scanner; // import scanner
 
@@ -61,7 +61,12 @@ public class Control {
         endScene.setEndScene();
 
         // begin game flow
+        System.out.println();
+        System.out.println("STAKE YOUR CLAIM: ");
+        System.out.println();
+        System.out.println();
         System.out.println(greeting.getGreeting());
+        System.out.println();
         System.out.print("Do you wish to proceed?\n"
                 + "yes / no: ");
         boolean validEntry = false; // reset for easch do-while
@@ -138,7 +143,8 @@ public class Control {
                     System.out.println();
                     System.out.println("The boulder doesn't move!"); // add a limit of tries before game over
                     System.out.println("The water is rising fast!");
-                    System.out.println("-1 Strength");
+                    System.out.println("-2 Strength");
+                    System.out.println("-5 Health");
                     playersCharacter.decreaseHeatlh(5);
                     playersCharacter.decreaseStrength(2); // adjusted stats method
                     break;
@@ -148,7 +154,7 @@ public class Control {
                     System.out.println(
                             "The boulder breaks apart, revealing the doorway and allowing the water to flow out.");
                     System.out.println("You proceed to safety.");
-                    System.out.println("+1 Intelligence");
+                    System.out.println("+5 Intelligence");
                     playersCharacter.increaseIntelligence(5);
                     validEntry = true;
                     break;
@@ -156,6 +162,8 @@ public class Control {
                     System.out.println();
                     System.out.println("You float as the water continues to rise. It fills the room, and you drown");
                     System.out.println("Game Over"); // need to add option to "play again"
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     break;
                 default:
@@ -182,6 +190,8 @@ public class Control {
                     System.out.println();
                     System.out.println("Your throat tightens and the room fades to black");
                     System.out.println("Your fate is sealed. Game over"); // insert restart game
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     validEntry = true;
                     break;
@@ -190,8 +200,8 @@ public class Control {
                     System.out.println("Your thirst has been quenched!");
                     System.out.println("A door way is revealed in the stone wall providing you an exit.");
                     System.out.println("You may proceed");
-                    System.out.println("+1 Courage");
-                    System.out.println("+1 Strength");
+                    System.out.println("+5 Courage");
+                    System.out.println("+5 Strength");
                     playersCharacter.increaseCourage(5);
                     playersCharacter.increaseStrength(5);
                     validEntry = true;
@@ -201,8 +211,8 @@ public class Control {
                     System.out.println(
                             "You give the man a sip and wait a moment. The man groans in pain and collapses. You drink from the other chalice");
                     System.out.println("A door way is revealed in the stone wall providing you an exit"); // insert would you like to play again?                                                                                                    // would yo                                                                                                        // like to                                                                                  // play again                                                                                      // option
-                    System.out.println("+1 Intelligence");
-                    System.out.println("-1 Courage");
+                    System.out.println("+5 Intelligence");
+                    System.out.println("-10 Courage");
                     playersCharacter.increaseIntelligence(5);
                     playersCharacter.decreaseCourage(10);
 
@@ -238,7 +248,7 @@ public class Control {
                     System.out.println("-20 heatlh");
                     playersCharacter.decreaseIntelligence(10);
                     playersCharacter.decreaseHeatlh(20);
-                    System.exit(0);
+                    // System.exit(0);
 
                     break;
                 case "b":
@@ -258,7 +268,7 @@ public class Control {
                     System.out.println("-20 health");
                     playersCharacter.increaseCourage(10);
                     playersCharacter.decreaseHeatlh(20);
-                    System.exit(0);
+                    // System.exit(0);
                     break;
                 default:
                     System.out.println();
@@ -290,6 +300,8 @@ public class Control {
                     System.out.println(
                             "You awake to find yourself inside a hut with a large culdroun boiling and the creature singing it's tune and sharpening a knife");                                                                                                                                                 // restart                                                                                                                                          // game
                     System.out.println("Game Over"); // insert restart
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     break;
                 case "b":
@@ -299,12 +311,13 @@ public class Control {
                     System.out.println(
                             "You awake to find yourself inside a hut with a large culdroun boiling and the creature singing it's tune and sharpening a knife");                                                                                                                                                           // restart                                                                                                                                                         // game
                     System.out.println("Game Over"); // insert restart
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     break;
                 case "c":
                     System.out.println();
-                    System.out
-                            .println("The tiny creature becomes furious, hurling curses at you in its foregin tounge");
+                    System.out.println("The tiny creature becomes furious, hurling curses at you in its foregin tounge");
                     System.out.println("Fine! I will show you you way.");
                     System.out.println("+10 intelligence");
                     playersCharacter.increaseIntelligence(10);
@@ -317,6 +330,8 @@ public class Control {
                     System.out.println(
                             "You awake to find yourself inside a hut with a large culdroun boiling and the creature singing it's tune and sharpening a knife");                                                                                                                                                 // restart                                                                                                                                                // game
                     System.out.println("Game Over"); // insert restart
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     break;
                 default:
@@ -347,6 +362,8 @@ public class Control {
                                     + " The wizard casts a spell and you fall unconcious. You awake in a dim room chained to "
                                     + " the wall. The only thing in the room is a pedastool which contains 2 chalices! Game Over"); // restart
                     playersCharacter.decreaseCourage(50);
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     break;
                 case "b":
@@ -364,6 +381,8 @@ public class Control {
                                     + " the wall. The only thing in the room is a pedastool which contains 2 chalices! Game Over"); // restart
                     playersCharacter.increaseCourage(20);
                     playersCharacter.decreaseIntelligence(20);
+                    System.out.println();
+                    System.out.println("Would you like to play again");
                     System.exit(0);
                     break;
                 default:
