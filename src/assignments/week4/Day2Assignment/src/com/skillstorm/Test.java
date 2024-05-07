@@ -1,4 +1,4 @@
-package com.skillstorm;
+package assignments.week4.Day2Assignment.src.com.skillstorm;
 
 import java.util.Scanner;
 
