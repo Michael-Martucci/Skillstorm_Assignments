@@ -7,6 +7,6 @@ public class InventoryService {
 
 // this needs quantities to be set based on each warehouse branch
 
-
+// logic here for capacity of warehouses
 
 }

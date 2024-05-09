@@ -2,7 +2,13 @@
 // need to add ID to items
 package com.skillstorm.warehouseinventoryapi.Models;
 
-public class Inventory {
+public class Products {
+
+    // private int id;
+    // private String name;
+    // private String descritption;
+    // private int quantity;
+    // private int weight_lbs;
 
     int copper_roll_3x500ft_lbs;
     int copper_roll_2x250ft_lbs;
@@ -12,10 +18,10 @@ public class Inventory {
     int lead_coat_copper_3x8_lbs;
 
     
-public Inventory(){}
+public Products(){}
 
 // do I need this many args? this should be customizeable based on shipments
-    public Inventory(int copper_roll_3x500ft_lbs, int copper_roll_2x250ft_lbs, int copper_roll_18in_lbs,
+    public Products(int copper_roll_3x500ft_lbs, int copper_roll_2x250ft_lbs, int copper_roll_18in_lbs,
         int copper_sheet_2x6_lbs, int copper_sheet_3x8_lbs, int lead_coat_copper_3x8_lbs) {
     
     super();
@@ -94,7 +100,7 @@ public Inventory(){}
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Inventory other = (Inventory) obj;
+        Products other = (Products) obj;
         if (copper_roll_3x500ft_lbs != other.copper_roll_3x500ft_lbs)
             return false;
         if (copper_roll_2x250ft_lbs != other.copper_roll_2x250ft_lbs)

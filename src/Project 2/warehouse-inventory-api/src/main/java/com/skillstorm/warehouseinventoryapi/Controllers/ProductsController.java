@@ -13,28 +13,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
+// add reqiest mapping at top of class and then use @ post mappping on methods
+// set path variable on the @request mapping so that all @post mapping point to the same path
+// week 8 day 3 < 1:22
 
 @RestController
-public class InventoryController {
+public class ProductsController {
 
-    @GetMapping("/Inventory")
+    // gets all products
+    @GetMapping("/products")
     public String getMethodName(@RequestParam(required = false) String param) {
         return new String();
     }
 
-    @PostMapping("/Receiving")
-    public String postMethodName(@RequestBody String entity) {
+    // gets an individual product
+    @GetMapping("/products/{id}")
+    public String getItem(@RequestParam(required = false) String param) {
+        return new String();
+    }
+
+    // adds a new product
+    @PostMapping("/products")
+    public String addProducts(@RequestBody String entity) {
         //TODO: process POST request
         
         return entity;
     }
     
-    @PutMapping("/shipped/{id}")
-    public String putMethodName(@PathVariable String id, @RequestBody String entity) {
+    // updates an existing product i.e quantity
+    @PutMapping("/products/{id}")
+    public String changeProducts(@PathVariable String id, @RequestBody String entity) {
         //TODO: process PUT request
         
         return entity;

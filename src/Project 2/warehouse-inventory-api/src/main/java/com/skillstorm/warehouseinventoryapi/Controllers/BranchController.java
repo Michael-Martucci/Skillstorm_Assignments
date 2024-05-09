@@ -17,6 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+// add reqiest mapping at top of class and then use @ post mappping on methods
+// set path variable on the @request mapping so that all @post mapping point to the same path
+// week 8 day 3 < 1:22
 
 @RestController
 public class BranchController {
