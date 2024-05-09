@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skillstorm.warehouseinventoryapi.Models.Branch;
 import com.skillstorm.warehouseinventoryapi.Services.BranchService;
 
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class BranchController {
 
-    @Autowired
+    @Autowired // dependency injection
     private BranchService branchService;
 
+    // this should probably just return the list of branch names only
     @GetMapping("/locations") // get method converts list to JSON
-    public List<Branch> getAllBranches(@RequestParam String param) { // returns the different branch locations
-        return BranchService.getAllBranches();
+    public List<Branch> getAllBranches(@RequestParam(required = false) String param) { // returns the different branch locations
+        return branchService.getAllBranches();
         // return Arrays.asList(
         //     new Branch("Doylestown", 01, "Main Street"),
         //     new Branch("N. Wales", 02, "Dickerson Road"),
@@ -41,10 +42,10 @@ public class BranchController {
     //     return null;
     // }
 
-// GET request to return branches by ID and display data
-    @GetMapping("/id")
-    public String getMethodName(@RequestParam String param) {
-        return new String();
+// GET request to return branches by ID and display data -- this should return the array list details 
+    // @GetMapping("/id")
+    // public Branch getBranch(String id) {
+    //     return BranchService.getBranch(id)
     }
     
-}
+

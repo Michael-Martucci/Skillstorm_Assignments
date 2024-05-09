@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-
 @RestController
 public class InventoryController {
 
     @GetMapping("/Inventory")
-    public String getMethodName(@RequestParam String param) {
+    public String getMethodName(@RequestParam(required = false) String param) {
         return new String();
     }
 

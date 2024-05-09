@@ -9,6 +9,7 @@ import com.skillstorm.warehouseinventoryapi.Models.Branch;
 
 @Service
 public class BranchService {
+
 // instance to return list of all branches
     private List<Branch> branches = Arrays.asList(
             new Branch("Doylestown", 01, "Main Street"),
@@ -17,9 +18,23 @@ public class BranchService {
             new Branch("Philadelphia", 04, "Street Road"));
 
 
-            // method to return
+            // method to return list of branches
             public List<Branch> getAllBranches(){
                 return branches;
             }
 
-}
+            // logic to return branch details based on ID
+            public void getBranch(List<Branch> branches, String id){
+                 for (Branch branch : branches) {
+                    if (branch.getName() == id) {
+                        return; // return what?
+                        // how to return individual branch from id
+                    }
+                }
+                // public Branch getBranch(String id){ // may need to change storeNum from int to string or get() different variable
+                //     return branches.stream().filter(t ->t.getName().equals(id)).findFirst().get();
+                // }
+            }
+        }
+        
+

@@ -4,86 +4,87 @@ package com.skillstorm.warehouseinventoryapi.Models;
 
 public class Inventory {
 
-    String siding;
-    String shingles;
-    String windows;
-    String doors;
-
-
-    public Inventory(){}
+    int copper_roll_3x500ft_lbs;
+    int copper_roll_2x250ft_lbs;
+    int copper_roll_18in_lbs;
+    int copper_sheet_2x6_lbs;
+    int copper_sheet_3x8_lbs;
+    int lead_coat_copper_3x8_lbs;
 
     
+public Inventory(){}
 
-    public Inventory(String siding, String shingles, String windows, String doors) {
-        this.siding = siding;
-        this.shingles = shingles;
-        this.windows = windows;
-        this.doors = doors;
+// do I need this many args? this should be customizeable based on shipments
+    public Inventory(int copper_roll_3x500ft_lbs, int copper_roll_2x250ft_lbs, int copper_roll_18in_lbs,
+        int copper_sheet_2x6_lbs, int copper_sheet_3x8_lbs, int lead_coat_copper_3x8_lbs) {
+    
+    super();
+    this.copper_roll_3x500ft_lbs = copper_roll_3x500ft_lbs;
+    this.copper_roll_2x250ft_lbs = copper_roll_2x250ft_lbs;
+    this.copper_roll_18in_lbs = copper_roll_18in_lbs;
+    this.copper_sheet_2x6_lbs = copper_sheet_2x6_lbs;
+    this.copper_sheet_3x8_lbs = copper_sheet_3x8_lbs;
+    this.lead_coat_copper_3x8_lbs = lead_coat_copper_3x8_lbs;
+}
+
+
+    public int getCopper_roll_3x500ft_lbs() {
+        return copper_roll_3x500ft_lbs;
+    }
+    public void setCopper_roll_3x500ft_lbs(int copper_roll_3x500ft_lbs) {
+        this.copper_roll_3x500ft_lbs = copper_roll_3x500ft_lbs;
+    }
+    public int getCopper_roll_2x250ft_lbs() {
+        return copper_roll_2x250ft_lbs;
+    }
+    public void setCopper_roll_2x250ft_lbs(int copper_roll_2x250ft_lbs) {
+        this.copper_roll_2x250ft_lbs = copper_roll_2x250ft_lbs;
+    }
+    public int getCopper_roll_18in_lbs() {
+        return copper_roll_18in_lbs;
+    }
+    public void setCopper_roll_18in_lbs(int copper_roll_18in_lbs) {
+        this.copper_roll_18in_lbs = copper_roll_18in_lbs;
+    }
+    public int getCopper_sheet_2x6_lbs() {
+        return copper_sheet_2x6_lbs;
+    }
+    public void setCopper_sheet_2x6_lbs(int copper_sheet_2x6_lbs) {
+        this.copper_sheet_2x6_lbs = copper_sheet_2x6_lbs;
+    }
+    public int getCopper_sheet_3x8_lbs() {
+        return copper_sheet_3x8_lbs;
+    }
+    public void setCopper_sheet_3x8_lbs(int copper_sheet_3x8_lbs) {
+        this.copper_sheet_3x8_lbs = copper_sheet_3x8_lbs;
+    }
+    public int getLead_coat_copper_3x8_lbs() {
+        return lead_coat_copper_3x8_lbs;
+    }
+    public void setLead_coat_copper_3x8_lbs(int lead_coat_copper_3x8_lbs) {
+        this.lead_coat_copper_3x8_lbs = lead_coat_copper_3x8_lbs;
     }
 
-
-
-    public String getSiding() {
-        return siding;
-    }
-
-
-    public void setSiding(String siding) {
-        this.siding = siding;
-    }
-
-
-    public String getShingles() {
-        return shingles;
-    }
-
-
-    public void setShingles(String shingles) {
-        this.shingles = shingles;
-    }
-
-
-    public String getWindows() {
-        return windows;
-    }
-
-
-    public void setWindows(String windows) {
-        this.windows = windows;
-    }
-
-
-    public String getDoors() {
-        return doors;
-    }
-
-
-    public void setDoors(String doors) {
-        this.doors = doors;
-    }
-
-
-// to string
     @Override
     public String toString() {
-        return "Inventory [siding=" + siding + ", shingles=" + shingles + ", windows=" + windows + ", doors=" + doors
-                + "]";
+        return "Inventory [copper_roll_3x500ft_lbs=" + copper_roll_3x500ft_lbs + ", copper_roll_2x250ft_lbs="
+                + copper_roll_2x250ft_lbs + ", copper_roll_18in_lbs=" + copper_roll_18in_lbs + ", copper_sheet_2x6_lbs="
+                + copper_sheet_2x6_lbs + ", copper_sheet_3x8_lbs=" + copper_sheet_3x8_lbs
+                + ", lead_coat_copper_3x8_lbs=" + lead_coat_copper_3x8_lbs + "]";
     }
 
-
-    // hash code over rdie
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((siding == null) ? 0 : siding.hashCode());
-        result = prime * result + ((shingles == null) ? 0 : shingles.hashCode());
-        result = prime * result + ((windows == null) ? 0 : windows.hashCode());
-        result = prime * result + ((doors == null) ? 0 : doors.hashCode());
+        result = prime * result + copper_roll_3x500ft_lbs;
+        result = prime * result + copper_roll_2x250ft_lbs;
+        result = prime * result + copper_roll_18in_lbs;
+        result = prime * result + copper_sheet_2x6_lbs;
+        result = prime * result + copper_sheet_3x8_lbs;
+        result = prime * result + lead_coat_copper_3x8_lbs;
         return result;
     }
-
-
 
     @Override
     public boolean equals(Object obj) {
@@ -94,30 +95,21 @@ public class Inventory {
         if (getClass() != obj.getClass())
             return false;
         Inventory other = (Inventory) obj;
-        if (siding == null) {
-            if (other.siding != null)
-                return false;
-        } else if (!siding.equals(other.siding))
+        if (copper_roll_3x500ft_lbs != other.copper_roll_3x500ft_lbs)
             return false;
-        if (shingles == null) {
-            if (other.shingles != null)
-                return false;
-        } else if (!shingles.equals(other.shingles))
+        if (copper_roll_2x250ft_lbs != other.copper_roll_2x250ft_lbs)
             return false;
-        if (windows == null) {
-            if (other.windows != null)
-                return false;
-        } else if (!windows.equals(other.windows))
+        if (copper_roll_18in_lbs != other.copper_roll_18in_lbs)
             return false;
-        if (doors == null) {
-            if (other.doors != null)
-                return false;
-        } else if (!doors.equals(other.doors))
+        if (copper_sheet_2x6_lbs != other.copper_sheet_2x6_lbs)
+            return false;
+        if (copper_sheet_3x8_lbs != other.copper_sheet_3x8_lbs)
+            return false;
+        if (lead_coat_copper_3x8_lbs != other.lead_coat_copper_3x8_lbs)
             return false;
         return true;
     }
 
-    
     
 
 

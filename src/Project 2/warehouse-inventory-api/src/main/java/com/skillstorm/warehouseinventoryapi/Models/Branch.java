@@ -7,6 +7,9 @@ public class Branch {
     private String name;
     private int storeNum;
     private String address;
+    // private int max_Capacity_Lbs; // these will all be DB table fields
+    // private String branchManager;
+    // private String numOfEmployees;
 
     public Branch(){};
 
