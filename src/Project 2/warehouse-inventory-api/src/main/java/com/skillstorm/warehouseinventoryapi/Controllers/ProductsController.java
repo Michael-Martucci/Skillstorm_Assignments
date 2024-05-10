@@ -4,7 +4,6 @@
 // PUT requests to update quantity after being sold
 // DELETE requests to remove discontinued items
 
-
 package com.skillstorm.warehouseinventoryapi.Controllers;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -39,16 +38,16 @@ public class ProductsController {
     // adds a new product
     @PostMapping("/products")
     public String addProducts(@RequestBody String entity) {
-        //TODO: process POST request
-        
+        // TODO: process POST request
+
         return entity;
     }
-    
+
     // updates an existing product i.e quantity
     @PutMapping("/products/{id}")
     public String changeProducts(@PathVariable String id, @RequestBody String entity) {
-        //TODO: process PUT request
-        
+        // TODO: process PUT request
+
         return entity;
     }
 
