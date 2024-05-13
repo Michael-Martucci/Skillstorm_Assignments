@@ -1,8 +1,10 @@
 // model class for building the different branch locations
 
-package com.skillstorm.warehouseinventoryapi.Models;
+package com.skillstorm.warehouseinventoryapi.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
@@ -14,18 +16,23 @@ public class Branch {
     private int storeNum;
 
     @Column(length = 30)
+    @NotBlank(message = "Error: Name cannot be blank")
     private String name;
 
     @Column(length = 30)
+    @NotBlank(message = "Error: Please enter a valid address")
     private String address;
 
     @Column(length = 30)
+    @NotBlank(message = "Error: Name cannot be blank")
     private String branchManager;
 
-    @Column(length = 30)
-    private String numOfEmployees;
+    @Column(length = 30) // this needs to be an int
+    @NotBlank(message = "Error: Name cannot be blank")
+    private int numOfEmployees;
 
     @Column
+    @Min(value = 0, message = "Error: Please enter a valid weight")
     private int max_Capacity_Lbs; // these will all be DB table fields
 
     // insert foreign key / join
@@ -35,9 +42,9 @@ public class Branch {
     public Branch(){};
 
     public Branch(int storeNum, String name, String address, String branchManager, 
-            String numOfEmployees, int max_Capacity_Lbs) {
+            int numOfEmployees, int max_Capacity_Lbs) {
         super();
-        this.storeNum = storeNum;
+        this.storeNum = storeNum; // ? should this increment a variable?
         this.name = name;
         this.address = address;
         this.branchManager = branchManager;
@@ -88,11 +95,11 @@ public class Branch {
         this.branchManager = branchManager;
     }
 
-    public String getNumOfEmployees() {
+    public int getNumOfEmployees() {
         return numOfEmployees;
     }
 
-    public void setNumOfEmployees(String numOfEmployees) {
+    public void setNumOfEmployees(int numOfEmployees) {
         this.numOfEmployees = numOfEmployees;
     }
 
@@ -103,8 +110,7 @@ public class Branch {
                 + branchManager + ", numOfEmployees=" + numOfEmployees + ", max_Capacity_Lbs=" + max_Capacity_Lbs + "]";
     }
 
-    // override hash
-    @Override
+    @Override // hash
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -112,13 +118,12 @@ public class Branch {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((address == null) ? 0 : address.hashCode());
         result = prime * result + ((branchManager == null) ? 0 : branchManager.hashCode());
-        result = prime * result + ((numOfEmployees == null) ? 0 : numOfEmployees.hashCode());
+        result = prime * result + numOfEmployees;
         result = prime * result + max_Capacity_Lbs;
         return result;
     }
 
-    // override .equals
-    @Override
+    @Override // equals
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -144,10 +149,7 @@ public class Branch {
                 return false;
         } else if (!branchManager.equals(other.branchManager))
             return false;
-        if (numOfEmployees == null) {
-            if (other.numOfEmployees != null)
-                return false;
-        } else if (!numOfEmployees.equals(other.numOfEmployees))
+        if (numOfEmployees != other.numOfEmployees)
             return false;
         if (max_Capacity_Lbs != other.max_Capacity_Lbs)
             return false;
@@ -155,7 +157,9 @@ public class Branch {
     }
 
     
+
+}
  
     
 
-}
+

@@ -1,0 +1,8 @@
+spring:
+    datasource:
+        url: ${dburl_prod}
+        username: ${dbusername}
+        password: ${dbpassword}
+    jpa:
+        hibernate:
+            ddl-auto: create

@@ -1,7 +1,7 @@
 // rename to Products if going to use this enum;
 // Useing ENUMS for the different inventory types with descriptions
 
-package com.skillstorm.warehouseinventoryapi.Models;
+package com.skillstorm.warehouseinventoryapi.models;
 
 public enum Stock {
 
