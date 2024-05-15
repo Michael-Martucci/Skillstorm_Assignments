@@ -1,8 +1,8 @@
 spring:
     datasource:
-        url: ${dburl_prod}
+        url: ${dburl}
         username: ${dbusername}
         password: ${dbpassword}
     jpa:
         hibernate:
-            ddl-auto: create
+            ddl-auto: update

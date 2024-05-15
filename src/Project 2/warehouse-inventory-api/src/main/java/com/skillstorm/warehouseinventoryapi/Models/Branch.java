@@ -16,7 +16,7 @@ public class Branch {
     private int storeNum;
 
     @Column(length = 30)
-    @NotBlank(message = "Error: Name cannot be blank")
+    @NotBlank(message = "Error: Name cannot be blank") // remove these validators - service class
     private String name;
 
     @Column(length = 30)
@@ -52,11 +52,11 @@ public class Branch {
         this.max_Capacity_Lbs = max_Capacity_Lbs;
     }
 
-    public Branch(int storeNum, String name) {
+    public Branch(int storeNum, String name, String address) {
         super();
         this.storeNum = storeNum;
         this.name = name;
-        // address
+        this.address = address;
     }
 
     // getters & setters

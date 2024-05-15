@@ -27,41 +27,22 @@ public class Products {
     @Min(value = 0, message = "Error: Name cannot be blank")
     private int weight_lbs;
 
-    // insert Foreign Key / Join
+    // insert Foreign Key
+    // @ManyToOne
+    @JoinColumn ( name = "location_Id")
+    private Branch branch;
 
-    // copper_roll_3x500ft_lbs;
-    // copper_roll_2x250ft_lbs;
-    // copper_roll_18in_lbs;
-    // copper_sheet_2x6_lbs;
-    // copper_sheet_3x8_lbs;
-    // lead_coat_copper_3x8_lbs;
-    // 1 - 2" pipe collar;
-    // 3 - 4" pipe collar;
-    // 1 1/2" copper roofing nails;
-    // 1 3/4" copper roofing naiils;
-    // 1/2" plywood;
-    // 3/4" plywood;
-    // GAF starter shingles;
-    // GAF hip and ridge 2 bd_Sq;
-    // IKO 3 tab shingles_3bd_Sq;
-    // GAF Architectural shingles_3bd_Sq;
-    // 1 1/2" coil nails Stainless;
-    //1 3/4" coild nails Stainless;
-    // Ice and H20 shield;
-    // 15# felt;
-    // 30# felt;
-    // Ridge cap roll 50ft;
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
 public Products(){}
 
 
-public Products(int product_Id, String product_name, int quantity, int weight_lbs) {
+public Products(int product_Id, String product_name, int quantity, int weight_lbs, Branch branch) {
     this.product_Id = product_Id; // ? should this increment a variable
     this.product_Name = product_name;
     this.quantity = quantity;
     this.weight_lbs = weight_lbs;
+    this.branch = branch;
+    
 }
 
 
@@ -99,6 +80,72 @@ public void setWeight_lbs(int weight_lbs) {
 }
 
 
-
-
+public Branch getBranch() {
+    return branch;
 }
+
+
+public void setBranch(Branch branch) {
+    this.branch = branch;
+}
+
+
+
+// public int getLocation_Id(){
+//     return location_Id;
+// }
+
+// public void setLocation_Id(int location_Id){
+//     this.location_Id = location_Id;
+// }
+
+
+// @Override
+// public String toString() {
+//     return "Products [product_Id=" + product_Id + ", product_Name=" + product_Name + ", quantity=" + quantity
+//             + ", weight_lbs=" + weight_lbs + ", location_Id=" + location_Id + "]";
+}
+
+
+// @Override
+// public int hashCode() {
+//     final int prime = 31;
+//     int result = 1;
+//     result = prime * result + product_Id;
+//     result = prime * result + ((product_Name == null) ? 0 : product_Name.hashCode());
+//     result = prime * result + quantity;
+//     result = prime * result + weight_lbs;
+//     result = prime * result + location_Id;
+//     return result;
+// }
+
+
+// @Override
+// public boolean equals(Object obj) {
+//     if (this == obj)
+//         return true;
+//     if (obj == null)
+//         return false;
+//     if (getClass() != obj.getClass())
+//         return false;
+//     Products other = (Products) obj;
+//     if (product_Id != other.product_Id)
+//         return false;
+//     if (product_Name == null) {
+//         if (other.product_Name != null)
+//             return false;
+//     } else if (!product_Name.equals(other.product_Name))
+//         return false;
+//     if (quantity != other.quantity)
+//         return false;
+//     if (weight_lbs != other.weight_lbs)
+//         return false;
+//     if (location_Id != other.location_Id)
+//         return false;
+//     return true;
+// }
+
+
+
+
+

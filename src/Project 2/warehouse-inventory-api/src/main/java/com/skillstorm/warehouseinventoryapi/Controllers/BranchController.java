@@ -10,19 +10,17 @@ import com.skillstorm.warehouseinventoryapi.models.Branch;
 import com.skillstorm.warehouseinventoryapi.services.BranchService;
 
 import jakarta.validation.Valid;
-// import java.util.Arrays;
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -31,42 +29,59 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class BranchController {
 
     
-    private BranchService branchService;
+    private final BranchService branchService;
 
-    // @Autowired
-    public BranchController(BranchService branchservice){ // no autowired needed
+    
+    public BranchController(BranchService branchservice){
         this.branchService = branchservice; 
     }
 
     // returns the different branch locations
     @GetMapping("/locations") // get method converts list to JSON
-    public List<Branch> getAllBranches(@RequestParam(required = false) String param) {
-        return branchService.getAllBranches();
+    @ResponseStatus (code = HttpStatus.OK)
+    public List<Branch> findAll(@RequestParam(required = false) String name) {
+        if (name == null) {
+            return branchService.findAll();
+        }else {
+            return findbyName(name);
+        }  
 
+    }
+    private List<Branch> findbyName(String name) {
+        return branchService.findByName(name);
     }
 
     // GET request to return branches by ID and display data
     @GetMapping("/{id}")
-    public Branch branchData(String id) {
-        return branchService.getBranchData(id);
+    public Optional<Branch> branchData(int id) { // had to change to optional 
+        return branchService.findbyId(id);
     }
 
     // POST request to add new branches
 
-    @PostMapping("path")
-    @ResponseStatus(code = HttpStatus.CREATED) // why this?
-    public Branch createBranch(@Valid @RequestBody Branch branch) {
+    @PostMapping("create")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Branch createBranch(@Valid @RequestBody Branch branch) { // this needs authentication
         
-        return branch; // return type needs to return branch data
+        return branchService.create(branch); // null check
     }
+
+    // updates an existing product i.e quantity
+    @PutMapping("/{id}")
+    public Branch updateBranch(@PathVariable int id, @RequestBody Branch product){
+        return updateBranch(id, product); // edge case check
+    }
+
 // DELETE reqeust to remove Branch by ID
      @DeleteMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.OK) // what needs to be fixed - not on Ericas code?
-    public Branch deleteBranch(@PathVariable Branch id) { // can I do it this way or need to be an int?
-        return null; // return list of current Branches
+    @ResponseStatus(code = HttpStatus.NO_CONTENT) // 204 // this needs authentication
+    public void deleteBranch(@PathVariable int id) { 
+        branchService.deleteById(id); // edge cases check
+ 
     }
+}
 
 
     
 
-}
+

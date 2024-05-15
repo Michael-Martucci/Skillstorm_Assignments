@@ -1,14 +1,18 @@
 package com.skillstorm.warehouseinventoryapi.services;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-// import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.skillstorm.warehouseinventoryapi.models.Branch;
 import com.skillstorm.warehouseinventoryapi.models.Products;
 import com.skillstorm.warehouseinventoryapi.repos.ProductsRepo;
 
+
+// make transactional?
 
 @Service
 public class ProductsService {
@@ -20,49 +24,37 @@ public class ProductsService {
         this.repo = repo;
     }
 
-
-    // instance to return list of all branches
-    private List<Products> products = Arrays.asList(
-        new Products(001, "copper_roll_3x500ft", 20, 80),
-        new Products(002, "copper_roll_2x250ft", 10, 65),
-        new Products(002, "copper_roll_18in", 40, 80),
-        new Products(004, "lead_coat_copper_3x8", 20, 80));
-
-    // method to return list of branches
-    public List<Products> getAllProducts() {
-        return products;
-    }
-
-
-// method to find product by ID
-public Products findProduct(String id) { // java brains code
-    // variable
-return products.stream().filter(t -> t.getProduct_name().equals(id)).findFirst().get();
+public List<Products>  findAll() {
+    return repo.findAll(); // return all Products
 }
 
+public List <Products> findByName(String name) {
+    return repo.findByName(name);
+}
 
-// call repo method on these? and make transactional?
-    public Products findbyId(int id) {
-        return null; // returns Product details by ID
+    public Optional <Products> findbyId(int id) {
+        return repo.findById(id); // returns Product details by ID
     }
 
-    public Products findbyName(String name) {
-        return null; // return Products details by name
-    }
-
-    public List<Products>  findAll() {
-        return repo.findAll(); // return all Products
-    }
-
+@Transactional
     public Products create(Products newProduct) {
-        return newProduct; // returns newly created Product (details)
+        Branch branchObj = newProduct.getBranch();
+        int currentCapacity = repo.countByBranchID(branchObj.getStoreNum());
+            if (currentCapacity >= branchObj.getMax_Capacity_Lbs())
+                throw new RuntimeException("Exceeds Branch Capacity");
+        return newProduct;
     }
 
-    public Products update(Products product, int id) {
-        return product; // returns updated product (details)
+    public Products update(int id, Products product) {
+        Optional<Products> currentItem = repo.findById(id); // add logic to update fields
+        return repo.save(currentItem); // returns updated product
     }
 
     public void deleteById(int id) { // removes product by ID
+        // check to make sure product ID exists
+        // can this sepcify which branch to delete from? - unique ID for each Item at branch
+        repo.deleteById(id);
         
     }
+
 }
