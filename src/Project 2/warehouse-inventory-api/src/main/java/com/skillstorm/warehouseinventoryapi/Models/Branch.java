@@ -2,10 +2,11 @@
 
 package com.skillstorm.warehouseinventoryapi.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-
 
 @Entity
 @Table(name = "Branch")
@@ -35,13 +36,15 @@ public class Branch {
     @Min(value = 0, message = "Error: Please enter a valid weight")
     private int max_Capacity_Lbs; // these will all be DB table fields
 
-    // insert foreign key / join
-
+    // foreign key
+    @OneToMany(mappedBy = "branch")
+    List<Products> items;
 
     // constructors
-    public Branch(){};
+    public Branch() {
+    };
 
-    public Branch(int storeNum, String name, String address, String branchManager, 
+    public Branch(int storeNum, String name, String address, String branchManager,
             int numOfEmployees, int max_Capacity_Lbs) {
         super();
         this.storeNum = storeNum; // ? should this increment a variable?
@@ -63,18 +66,23 @@ public class Branch {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public int getStoreNum() {
         return storeNum;
     }
+
     public void setStoreNum(int storeNum) {
         this.storeNum = storeNum;
     }
+
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -110,7 +118,8 @@ public class Branch {
                 + branchManager + ", numOfEmployees=" + numOfEmployees + ", max_Capacity_Lbs=" + max_Capacity_Lbs + "]";
     }
 
-    @Override // hash
+    // hash
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -123,7 +132,8 @@ public class Branch {
         return result;
     }
 
-    @Override // equals
+    // equals()
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -156,10 +166,9 @@ public class Branch {
         return true;
     }
 
-    
+    public Products[] getProducts() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getProducts'");
+    }
 
 }
- 
-    
-
-

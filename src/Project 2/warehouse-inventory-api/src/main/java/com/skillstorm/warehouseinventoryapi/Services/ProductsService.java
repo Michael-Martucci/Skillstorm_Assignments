@@ -3,58 +3,67 @@ package com.skillstorm.warehouseinventoryapi.services;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.skillstorm.warehouseinventoryapi.models.Branch;
 import com.skillstorm.warehouseinventoryapi.models.Products;
 import com.skillstorm.warehouseinventoryapi.repos.ProductsRepo;
 
-
-// make transactional?
-
+@Transactional // spring framework annotation or jakarta?
 @Service
 public class ProductsService {
 
-     private final ProductsRepo repo; //?
+    private final ProductsRepo repo;
 
-    // @Autowired // constructor dependency - unused?
     public ProductsService(ProductsRepo repo) {
         this.repo = repo;
     }
 
-public List<Products>  findAll() {
-    return repo.findAll(); // return all Products
-}
-
-public List <Products> findByName(String name) {
-    return repo.findByName(name);
-}
-
-    public Optional <Products> findbyId(int id) {
-        return repo.findById(id); // returns Product details by ID
+    // return all Products
+    public List<Products> findAll() {
+        return repo.findAll();
+    }
+    // find Product by name
+    public List<Products> findByName(String name) {
+        return repo.findByName(name);
+    }
+    // returns Product details by ID
+    public Optional<Products> findbyId(int id) {
+        if (!repo.existsById(id))
+            throw new IllegalArgumentException("No product with id " + id + " exists");
+        return repo.findById(id);
+    }
+    // creates new Product
+    public Products createItem(Products newProduct) {
+        int maxCapacity = newProduct.getBranch().getMax_Capacity_Lbs();
+        int usedCapacity = repo.sumWeightByLocation(newProduct.getBranch());
+        int availableCapacity = maxCapacity - usedCapacity;
+        if (newProduct.getWeight_lbs() < availableCapacity)
+            return repo.save(newProduct); // saves & returns updated product
+        else {
+            throw new IllegalArgumentException(" This product will exceed warehouse capacity");
+        }
     }
 
-@Transactional
-    public Products create(Products newProduct) {
-        Branch branchObj = newProduct.getBranch();
-        int currentCapacity = repo.countByBranchID(branchObj.getStoreNum());
-            if (currentCapacity >= branchObj.getMax_Capacity_Lbs())
-                throw new RuntimeException("Exceeds Branch Capacity");
-        return newProduct;
+    // updates existing product
+    public Products updateItem(Products updateProduct) { // does this need to be an int since by ID?
+        int maxCapacity = updateProduct.getBranch().getMax_Capacity_Lbs();
+        int usedCapacity = repo.sumWeightByLocation(updateProduct.getBranch());
+        int availableCapacity = maxCapacity - usedCapacity;
+        if (updateProduct.getWeight_lbs() < availableCapacity)
+            return repo.save(updateProduct); // saves & returns updated product
+        else {
+            throw new IllegalArgumentException(" This product will exceed warehouse capacity");
+        }
+
     }
 
-    public Products update(int id, Products product) {
-        Optional<Products> currentItem = repo.findById(id); // add logic to update fields
-        return repo.save(currentItem); // returns updated product
-    }
-
-    public void deleteById(int id) { // removes product by ID
-        // check to make sure product ID exists
-        // can this sepcify which branch to delete from? - unique ID for each Item at branch
+    // removes product by ID
+    public void deleteById(int id) {
+        if (!repo.existsById(id))
+            throw new IllegalArgumentException("No product with id " + id + " exists");
         repo.deleteById(id);
-        
+
     }
 
 }
