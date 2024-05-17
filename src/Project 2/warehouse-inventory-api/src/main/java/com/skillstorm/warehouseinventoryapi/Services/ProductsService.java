@@ -32,31 +32,48 @@ public class ProductsService {
         if (!repo.existsById(id))
             throw new IllegalArgumentException("No product with id " + id + " exists");
         return repo.findById(id);
+
     }
+
+    public Products getProductsById(int id){
+        return repo.findById(id).orElse(null);
+    }
+
+
     // creates new Product
     public Products createItem(Products newProduct) {
-        int maxCapacity = newProduct.getBranch().getMax_Capacity_Lbs();
-        int usedCapacity = repo.sumWeightByLocation(newProduct.getBranch());
-        int availableCapacity = maxCapacity - usedCapacity;
-        if (newProduct.getWeight_lbs() < availableCapacity)
+        // int maxCapacity = newProduct.getBranch().getMax_Capacity_Lbs();
+        // int usedCapacity = repo.sumWeightByLocation(newProduct.getBranch().getStoreNum());
+        // int availableCapacity = maxCapacity - usedCapacity;
+        // if (newProduct.getWeight_lbs() < availableCapacity)
             return repo.save(newProduct); // saves & returns updated product
-        else {
-            throw new IllegalArgumentException(" This product will exceed warehouse capacity");
-        }
+        // else {
+        //     throw new IllegalArgumentException(" This product will exceed warehouse capacity");
+        // }
     }
 
     // updates existing product
-    public Products updateItem(Products updateProduct) { // does this need to be an int since by ID?
-        int maxCapacity = updateProduct.getBranch().getMax_Capacity_Lbs();
-        int usedCapacity = repo.sumWeightByLocation(updateProduct.getBranch());
-        int availableCapacity = maxCapacity - usedCapacity;
-        if (updateProduct.getWeight_lbs() < availableCapacity)
-            return repo.save(updateProduct); // saves & returns updated product
-        else {
-            throw new IllegalArgumentException(" This product will exceed warehouse capacity");
-        }
+    public Products updateItem(Products product) { 
+        Products existingProduct = repo.findById(product.getProduct_Id()).orElse(null);
+            existingProduct.setName(product.getName());
+            existingProduct.setQuantity(product.getQuantity());
+            existingProduct.setCost(product.getCost());
+            existingProduct.setWeight_lbs(product.getWeight_lbs());
+        // int maxCapacity = product.getBranch().getMax_Capacity_Lbs();
+        // int usedCapacity = repo.sumWeightByLocation(product.getBranch().getStoreNum());
+        // int availableCapacity = maxCapacity - usedCapacity;
+        // if (product.getWeight_lbs() < availableCapacity)
+
+            
+            return repo.save(existingProduct); // saves & returns updated product
+        // else {
+        //     throw new IllegalArgumentException(" This product will exceed warehouse capacity");
+        // }
 
     }
+
+    // put method
+
 
     // removes product by ID
     public void deleteById(int id) {

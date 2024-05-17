@@ -37,7 +37,7 @@ public class BranchController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Branch> findAll(@RequestParam(required = false) String name) {
         if (name == null) {
-            return branchService.findAll();
+            return branchService.findAllBranches();
         } else {
             return findbyName(name);
         }
@@ -50,7 +50,7 @@ public class BranchController {
 
     // GET request to return branches by ID and display data
     @GetMapping("/{id}")
-    public Optional<Branch> branchData(@PathVariable int id) { // had to change to optional
+    public Optional<Branch> branchData(@PathVariable int id) {
         return branchService.findbyId(id);
     }
 

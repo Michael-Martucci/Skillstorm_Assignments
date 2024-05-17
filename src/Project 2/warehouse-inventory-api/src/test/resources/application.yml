@@ -1,0 +1,8 @@
+spring:
+    datasource:
+        url: ${dburl}
+        username: ${dbusername}
+        password: ${dbpassword}
+    jpa:
+        hibernate:
+            ddl-auto: auto

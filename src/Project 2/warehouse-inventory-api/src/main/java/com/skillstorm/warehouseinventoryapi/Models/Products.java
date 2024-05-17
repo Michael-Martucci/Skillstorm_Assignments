@@ -26,6 +26,10 @@ public class Products {
     @Min(value = 0, message = "Error: Name cannot be blank")
     private int weight_lbs;
 
+    @Column
+    @Min(value = 0, message = "Error: cost cannot be less than zero")
+    private double cost;
+
     // Foreign Key
     @ManyToOne
     @JoinColumn(name = "location_Id")
@@ -35,14 +39,18 @@ public class Products {
     public Products() {
     }
 
-    public Products(int product_Id, String name, int quantity, int weight_lbs, Branch branch) {
-        this.product_Id = product_Id; // ? should this increment a variable
+    public Products(int product_Id, @NotBlank(message = "Error: Name cannot be blank") String name,
+            @Min(value = 0, message = "Error: Quantity cannot be less than zero") int quantity,
+            @Min(value = 0, message = "Error: Name cannot be blank") int weight_lbs,
+            @Min(value = 0, message = "Error: cost cannot be less than zero") double cost, Branch branch) {
+        this.product_Id = product_Id;
         this.name = name;
         this.quantity = quantity;
         this.weight_lbs = weight_lbs;
+        this.cost = cost;
         this.branch = branch;
-
     }
+
 
     // getters and setters
     public int getProduct_Id() {
@@ -85,11 +93,19 @@ public class Products {
         this.branch = branch;
     }
 
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
     // to string
     @Override
     public String toString() {
         return "Products [product_Id=" + product_Id + ", name=" + name + ", quantity=" + quantity + ", weight_lbs="
-                + weight_lbs + ", branch=" + branch + "]";
+                + weight_lbs + ", cost=" + cost + ", branch=" + branch + "]";
     }
 
     // hash
@@ -101,11 +117,14 @@ public class Products {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + quantity;
         result = prime * result + weight_lbs;
+        long temp;
+        temp = Double.doubleToLongBits(cost);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
         result = prime * result + ((branch == null) ? 0 : branch.hashCode());
         return result;
     }
 
-    // equals()
+    // equals
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -126,6 +145,8 @@ public class Products {
             return false;
         if (weight_lbs != other.weight_lbs)
             return false;
+        if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
+            return false;
         if (branch == null) {
             if (other.branch != null)
                 return false;
@@ -134,4 +155,9 @@ public class Products {
         return true;
     }
 
+        
+
+    
+
+    
 }

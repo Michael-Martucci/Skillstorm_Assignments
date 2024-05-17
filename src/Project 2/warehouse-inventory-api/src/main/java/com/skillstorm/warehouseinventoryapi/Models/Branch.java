@@ -33,6 +33,10 @@ public class Branch {
     private int numOfEmployees;
 
     @Column
+    @Min(value = 0)
+    private int currentCapacity;
+
+    @Column
     @Min(value = 0, message = "Error: Please enter a valid weight")
     private int max_Capacity_Lbs; // these will all be DB table fields
 
@@ -44,16 +48,21 @@ public class Branch {
     public Branch() {
     };
 
-    public Branch(int storeNum, String name, String address, String branchManager,
-            int numOfEmployees, int max_Capacity_Lbs) {
-        super();
-        this.storeNum = storeNum; // ? should this increment a variable?
+    public Branch(int storeNum, @NotBlank(message = "Error: Name cannot be blank") String name,
+            @NotBlank(message = "Error: Please enter a valid address") String address,
+            @NotBlank(message = "Error: Name cannot be blank") String branchManager,
+            @NotBlank(message = "Error: Name cannot be blank") int numOfEmployees,
+            @Min(value = 0, message = "Error: Please enter a valid weight") int max_Capacity_Lbs,
+            List<Products> items) {
+        this.storeNum = storeNum;
         this.name = name;
         this.address = address;
         this.branchManager = branchManager;
         this.numOfEmployees = numOfEmployees;
         this.max_Capacity_Lbs = max_Capacity_Lbs;
+        this.items = items;
     }
+
 
     public Branch(int storeNum, String name, String address) {
         super();
@@ -61,6 +70,7 @@ public class Branch {
         this.name = name;
         this.address = address;
     }
+
 
     // getters & setters
     public String getName() {
@@ -111,13 +121,30 @@ public class Branch {
         this.numOfEmployees = numOfEmployees;
     }
 
+    public List<Products> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Products> items) {
+        this.items = items;
+    }
+
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public void setCurrentCapacity(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
+    }
+
+
     // to string
     @Override
     public String toString() {
         return "Branch [storeNum=" + storeNum + ", name=" + name + ", address=" + address + ", branchManager="
-                + branchManager + ", numOfEmployees=" + numOfEmployees + ", max_Capacity_Lbs=" + max_Capacity_Lbs + "]";
+                + branchManager + ", numOfEmployees=" + numOfEmployees + ", currentCapacity=" + currentCapacity
+                + ", max_Capacity_Lbs=" + max_Capacity_Lbs + ", items=" + items + "]";
     }
-
     // hash
     @Override
     public int hashCode() {
@@ -128,11 +155,13 @@ public class Branch {
         result = prime * result + ((address == null) ? 0 : address.hashCode());
         result = prime * result + ((branchManager == null) ? 0 : branchManager.hashCode());
         result = prime * result + numOfEmployees;
+        result = prime * result + currentCapacity;
         result = prime * result + max_Capacity_Lbs;
+        result = prime * result + ((items == null) ? 0 : items.hashCode());
         return result;
     }
 
-    // equals()
+    // equals
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -161,14 +190,17 @@ public class Branch {
             return false;
         if (numOfEmployees != other.numOfEmployees)
             return false;
+        if (currentCapacity != other.currentCapacity)
+            return false;
         if (max_Capacity_Lbs != other.max_Capacity_Lbs)
+            return false;
+        if (items == null) {
+            if (other.items != null)
+                return false;
+        } else if (!items.equals(other.items))
             return false;
         return true;
     }
 
-    public Products[] getProducts() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProducts'");
-    }
-
+    
 }

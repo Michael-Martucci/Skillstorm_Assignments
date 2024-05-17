@@ -10,9 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +41,7 @@ public class ProductsController {
         if (name == null) {
             return productsService.findAll();
         } else {
-            return productsService.findByName(name); // edge case for branch name in endpoint
+            return productsService.findByName(name);
         }
 
     }
@@ -59,9 +61,9 @@ public class ProductsController {
         return productsService.createItem(product);
     }
 
-    // updates an existing product i.e quantity
+
+  // update an existing product i.e quantity
     @PutMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
     public Products updateProducts(@Valid @PathVariable int id, @RequestBody Products product) {
 
         return productsService.updateItem(product);

@@ -25,7 +25,7 @@ public class BranchService {
     }
 
     // return all branches
-    public List<Branch> findAll() {
+    public List<Branch> findAllBranches() {
         return repo.findAll();
     }
 
