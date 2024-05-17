@@ -12,15 +12,21 @@ GET /warehouses – retrieves all warehouses
 
 GET /warehouses/id – retrieves data on the warehouse
 
+POST /warehouses/create – creates new warehouse entry in the database
+
+PUT /warehouses/id – updates warehouse entry in the database
+
+DELETE /warehouses/id – deletes warehouses from the database
+
 GET /products – retrieves all products
 
 GET /products/id – retrieves products by product id
 
-POST /products – creates a new product entry in the database
+POST /products/create – creates a new product entry in the database
 
 PUT /products/id – updates product entry in the database
 
-DELETE /products/id – deletes product entry in the database
+DELETE /products/id – deletes products from database
 
 ## Current functionality
 In its current build this API successfully issues GET requests for:
