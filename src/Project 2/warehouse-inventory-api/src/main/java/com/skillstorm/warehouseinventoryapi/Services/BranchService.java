@@ -24,9 +24,9 @@ public class BranchService {
         this.repo = repo;
     }
 
-    // return all branches
+    // return all branches with basic info
     public List<Branch> findAllBranches() {
-        return repo.findAll();
+        return repo.findAllBranches();
     }
 
     // return branch name and number

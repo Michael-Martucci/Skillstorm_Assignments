@@ -42,14 +42,14 @@ public class ProductsService {
 
     // creates new Product
     public Products createItem(Products newProduct) {
-        // int maxCapacity = newProduct.getBranch().getMax_Capacity_Lbs();
-        // int usedCapacity = repo.sumWeightByLocation(newProduct.getBranch().getStoreNum());
-        // int availableCapacity = maxCapacity - usedCapacity;
-        // if (newProduct.getWeight_lbs() < availableCapacity)
+        int maxCapacity = newProduct.getBranch().getMax_Capacity_Lbs();
+        int usedCapacity = repo.sumWeightByLocation(newProduct.getBranch().getStoreNum());
+        int availableCapacity = maxCapacity - usedCapacity;
+        if (newProduct.getWeight_lbs() < availableCapacity)
             return repo.save(newProduct); // saves & returns updated product
-        // else {
-        //     throw new IllegalArgumentException(" This product will exceed warehouse capacity");
-        // }
+        else {
+            throw new IllegalArgumentException(" This product will exceed warehouse capacity");
+        }
     }
 
     // updates existing product
@@ -59,21 +59,18 @@ public class ProductsService {
             existingProduct.setQuantity(product.getQuantity());
             existingProduct.setCost(product.getCost());
             existingProduct.setWeight_lbs(product.getWeight_lbs());
-        // int maxCapacity = product.getBranch().getMax_Capacity_Lbs();
-        // int usedCapacity = repo.sumWeightByLocation(product.getBranch().getStoreNum());
-        // int availableCapacity = maxCapacity - usedCapacity;
-        // if (product.getWeight_lbs() < availableCapacity)
+        int maxCapacity = product.getBranch().getMax_Capacity_Lbs();
+        int usedCapacity = repo.sumWeightByLocation(product.getBranch().getStoreNum());
+        int availableCapacity = maxCapacity - usedCapacity;
+        if (product.getWeight_lbs() < availableCapacity)
 
             
             return repo.save(existingProduct); // saves & returns updated product
-        // else {
-        //     throw new IllegalArgumentException(" This product will exceed warehouse capacity");
-        // }
+        else {
+            throw new IllegalArgumentException(" This product will exceed warehouse capacity");
+        }
 
     }
-
-    // put method
-
 
     // removes product by ID
     public void deleteById(int id) {
