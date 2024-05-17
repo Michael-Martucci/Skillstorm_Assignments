@@ -1,18 +1,43 @@
-## Getting Started
+## Warehouse management API
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This program is designed to serve as the back end functionality allowing companies to create, review, update, 
+and delete their current and future shipping and receiving. 
 
-## Folder Structure
+## How to use:
 
-The workspace contains two folders by default, where:
+utilize the designated endpoints to issue requests:
+http://localhost:8080
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+GET /warehouses – retrieves all warehouses
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+GET /warehouses/id – retrieves data on the warehouse
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+GET /products – retrieves all products
+
+GET /products/id – retrieves products by product id
+
+POST /products – creates a new product entry in the database
+
+PUT /products/id – updates product entry in the database
+
+DELETE /products/id – deletes product entry in the database
+
+## Current functionality
+In its current build this API successfully issues GET requests for:
+- all warehouses
+- warehouse locations by ID
+- all inventory products
+- inventory products by ID
+- deletes products by ID
+
+## Upcoming updates
+- PUT and POST functionality to create or update warehouse locations and products
+- adding user authentication and permissions
+- database triggers to dynamically adjust capacity as products are added or removed
+- customer and transaction tables to database
+- more detailed product descriptions
 
 ## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+This api was built and hosted on a MySQL database
+- schema and SQL files may be found in the sql-scripts file
