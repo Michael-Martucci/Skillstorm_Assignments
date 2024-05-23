@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Cars</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+    }
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+            margin-bottom: 20px;
+            background-color: white;
+            border: 5px; /*I had trouble getting the border color set it kept changing the text color*/
+            padding: 10px;
+            border-radius: 5px;
+            
+        }
+        
+        .main {
+            max-width: 100%;
+            height: auto;
+            width: 300px;
+        }
+
+        .car-details {
+            max-width: 600px;
+        }
+
+
+    </style>
+</head> 
+    <h1>1998 Ford F-150</h1>  
+   <body>
+    <div class="container">
+    <picture>
+        <img id="mainImage" srcset="images/1999_ford_f-150-pic.jpeg" width="460" height="345" alt="Ford Truck"> 
+
+    </picture>
+    <div class="car-details">
+        <p>For sale: a reliable and rugged 1998 Ford F-150, perfect for those who need a dependable 
+        workhorse or a sturdy off-road companion. This F-150 comes with a powerful 4.6L V8 engine paired 
+        with an automatic transmission, ensuring smooth and effortless driving. With 145,000 miles on the 
+        odometer, this truck has been well-maintained and still has plenty of life left in it.
+        The paint is in good condition with only minor scratches and dings typical of a vehicle of this age. 
+        No major rust issues, and the body is solid. The seats and carpets are clean with no significant wear 
+        or tear. All interior features and controls are functioning properly.This truck runs and drives smoothly. 
+        Recent maintenance includes an oil change, new brake pads, and a transmission fluid flush. No known 
+        mechanical issues. I am the third owner of this F-150. It has been well cared for and primarily used for 
+        light hauling and occasional off-road trips. No major accidents reported. Clean title in hand.</p>
+    </div>
+</div>
+    <h2>Additional Photos</h2>
+    <picture>
+        <img srcset="images/truck-pic.jpeg" width="100" height="100">
+        <img srcset="images/another-pic.jpeg" width="100" height="100"> 
+        <img srcset="images/again-pic.jpeg" width="100" height="100"> 
+    </picture>
+    <script>
+    //    Couldnt figure out part 2
+    </script>
+</body>
+</html>

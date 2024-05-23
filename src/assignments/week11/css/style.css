@@ -1,0 +1,6 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the image and text */
+    margin-bottom: 20px;
+}

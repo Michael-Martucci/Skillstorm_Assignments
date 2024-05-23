@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.skillstorm.warehouseinventoryapi.models.Products;
 import com.skillstorm.warehouseinventoryapi.repos.ProductsRepo;
 
-@Transactional // spring framework annotation or jakarta?
+@Transactional
 @Service
 public class ProductsService {
 
@@ -34,7 +34,7 @@ public class ProductsService {
         return repo.findById(id);
 
     }
-
+    // alternative method to find by ID using Products type
     public Products getProductsById(int id){
         return repo.findById(id).orElse(null);
     }

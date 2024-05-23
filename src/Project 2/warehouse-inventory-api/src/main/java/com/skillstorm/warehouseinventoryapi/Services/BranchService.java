@@ -32,7 +32,7 @@ public class BranchService {
     // return branch name and number
     public List<Branch> findByName(String name) {
 
-        return repo.findByName(name); // return branch name and number
+        return repo.findByName(name);
     }
 
     // returns Branch data by ID

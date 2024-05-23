@@ -55,7 +55,7 @@ public class BranchController {
     }
 
     // Add new branches
-    @PostMapping("create")
+    @PostMapping("/create")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Branch createBranch(@Valid @RequestBody Branch branch) { // this needs authentication
         return branchService.create(branch); // null check
