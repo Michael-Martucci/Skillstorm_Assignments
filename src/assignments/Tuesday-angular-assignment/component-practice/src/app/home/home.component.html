@@ -1,0 +1,14 @@
+
+<div>
+    <h1>Employee List</h1>
+    <ul>
+      <li *ngFor="let employee of employees">
+        <p>ID: {{ employee.emp_id }}</p>
+        <p>Name: {{ employee.name }}</p>
+        <p>DOB:{{ employee.DOB }}</p>
+        <p>Role:{{ employee.role }}</p>
+        <p>Hourly Rate:${{ employee.hourly_rate }}</p>
+      </li>
+    </ul>
+  </div>
+  
