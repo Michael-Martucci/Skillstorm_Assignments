@@ -7,7 +7,7 @@
         <p>Name: {{ employee.name }}</p>
         <p>DOB:{{ employee.DOB }}</p>
         <p>Role:{{ employee.role }}</p>
-        <p>Hourly Rate:${{ employee.hourly_rate }}</p>
+        <p>Hourly Rate:{{ employee.hourly_rate | currency}}</p>
       </li>
     </ul>
   </div>
